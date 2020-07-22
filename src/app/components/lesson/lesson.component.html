@@ -1,0 +1,139 @@
+<!-- Header -->
+<app-header></app-header>
+
+<!-- Content -->
+<main *ngIf="lesson; else Error404" role="main" class="site-content">
+    <div class="container">
+        <div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+            <div class="h-100 tofront">
+                <div class="row justify-content-between ">
+                    <div class="col-md-8 pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+                        <!-- <p class="text-uppercase font-weight-bold">
+                            <span class="catlist">
+                                <a class="sscroll text-danger" href="/mundana-theme-jekyll/categories.html#jekyll">Lingala</a><span class="sep">, </span>
+                                <a class="sscroll text-danger" href="/mundana-theme-jekyll/categories.html#tutorial">Grammaire</a><span class="sep">, </span>
+                            </span>
+                        </p> -->
+                        <h1 class="display-4 mb-4 article-headline">{{ lesson.title }}</h1>
+                        <div class="d-flex align-items-center">
+                            <img class="rounded-circle" src="assets/images/avatar-mkb.jpg" alt="mkb" width="70"/>
+                            <small class="ml-3">
+                                Michel
+                                <span>
+                                    <a target="_blank" href="https://twitter.com/MBuhendwa" class="btn btn-outline-success btn-sm btn-round ml-1">Suivre @MBuhendwa</a>
+                                </span>
+                                <span class="text-muted d-block mt-1">{{ lesson.published_date.seconds * 1000 | date: 'dd MMMM y' }}</span>
+                            </small>
+                        </div>
+                    </div>
+                    
+                    <!-- <div class="col-md-6 pr-0 align-self-center">
+                        <img class="rounded" src="assets/images/3.jpg" alt="Education must also train one for quick, resolute and effective thinking.">
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container-lg pt-4 pb-4">
+        <div class="row justify-content-center">
+            
+            <!-- Share -->
+            <!-- <div class="col-lg-2 pr-4 mb-4 col-md-12">
+                <div class="sticky-top sticky-top-offset text-center">
+                    <div class="text-muted">Share this</div>
+                    <div class="share d-inline-block">
+                        <a class="twitter-share-button" data-size="large" href="https://twitter.com/intent/tweet?url={{ lesson_url }}&hashtags=LearnLingala,LingalaFacile,243Langues&via=243Langues" target="_blank">Tweet</a><br>
+                        <div class="fb-share-button" data-layout="button_count" data-size="large"><a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div>
+                    </div>
+                </div>
+            </div> -->
+
+            <div class="col-md-12 col-lg-8">
+                
+                <!-- Article -->
+                <article class="article-post" [innerHTML]="lesson.content"></article>
+                
+                <!-- Navigation -->
+                <div class="mt-5">
+                    <!-- Pagination links -->
+                    <ul class="pagination">
+                        <li *ngIf="lesson.previous" class="page-item previous-lesson"><a class="page-link" href="/mundana-theme-jekyll/page2">Précédent : {{ lesson.previous.id }} &raquo;</a></li>
+                        <li *ngIf="lesson.next" class="page-item next-lesson"><a class="page-link" href="/mundana-theme-jekyll/page2">Suivant : {{ lesson.next.id }} &raquo;</a></li>
+                    </ul>
+                </div>
+                <hr>
+                <!-- Tags -->
+                <div class="mb-4">
+                    <span class="taglist"></span>
+                </div>
+    
+                <!-- Mailchimp Subscribe Form -->
+                <!-- <div class="border p-5 bg-lightblue">
+                    <div class="row justify-content-between">
+                        <div class="col-md-6 mb-2 mb-md-0">
+                            <h5 class="font-weight-bold">Join Newsletter</h5>
+                            Get the latest news right in your inbox. We never spam!
+                        </div>
+                        <div class="col-md-6">
+                            <div class="row">
+                                <form action="https://wowthemes.us11.list-manage.com/subscribe/post?u=8aeb20a530e124561927d3bd8&amp;id=8c3d2d214b" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                                <div class="mc-field-group">
+                                
+                                    <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                                
+                                
+                                    <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+                                
+                                </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+                
+                <!-- Author Box -->
+                <div class="row mt-5">
+                    <div class="col-md-2 align-self-center">
+                        <img class="rounded-circle" src="assets/images/avatar-mkb.jpg" alt="Michel" width="90"/>
+                    </div>
+                    <div class="col-md-10">		
+                        <h5 class="font-weight-bold">Écrit par Michel
+                            <span>
+                                <a target="_blank" href="https://twitter.com/MBuhendwa" class="btn btn-outline-success btn-sm btn-round ml-1">Suivre @MBuhendwa</a>
+                            </span>
+                        </h5>
+                        Fondateur de 243Langues
+                    </div>
+                </div>
+                <hr>
+
+                <!-- Comments -->
+                <div class="fb-comments" data-numposts="5" data-width=""></div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Aletbar Prev/Next -->
+    <div class="alertbar">
+        <div class="container">
+            <div class="row prevnextlinks small font-weight-bold">
+                <div class="col-md-6 rightborder pl-0">
+                    <a class="text-dark" href="/mundana-theme-jekyll/acumulated-experience/"> <img height="30px" class="mr-1" src="/mundana-theme-jekyll/assets/images/15.jpg">  Accumulated experience of social living</a>
+                </div>
+                <div class="col-md-6 text-right pr-0">
+                    <a class="text-dark" href="/mundana-theme-jekyll/first-mass-produced/"> The first mass-produced book to deviate from a rectilinear format  <img height="30px" class="ml-1" src="/mundana-theme-jekyll/assets/images/17.jpg"> </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<!-- 404 Error -->
+<ng-template #Error404>
+    <div class="container">
+        <h5>Could not find Lesson.</h5>
+    </div>
+</ng-template>
+
+<app-footer></app-footer>
