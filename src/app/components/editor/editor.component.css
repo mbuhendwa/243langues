@@ -1,0 +1,52 @@
+:root {
+    --cdblue: #007fff;
+    --cdred: #ce102f;
+    --cdyellow: #f7d618;
+    --cdvert: #1e752c;
+    --cdgold: #ffe7a45b;
+    --cdchoco: chocolate;
+}
+
+.prefixe {
+    font-weight: bold;
+    color: var(--cdvert);
+}
+
+.suffixe {
+    font-weight: bold;
+    color: var(--cdblue);
+}
+.radical {
+    font-weight: bold;
+    color: var(--cdred);
+}
+
+.infixe {
+    font-weight: bold;
+    color: var(--cdchoco);
+}
+
+.bloc-centre {
+  text-align: center;
+}
+
+.regle-dor {
+    background-color: var(--cdgold);
+}
+.regle-dor .titre {
+    text-decoration: underline;
+    font-weight: bold;
+}
+.pagination .previous-lesson {
+    text-align: left;
+}
+.pagination .next-lesson {
+    text-align: right;
+}
+textarea {
+    float: top;
+    width: 100%;
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    box-sizing: border-box;         /* Opera/IE 8+ */
+}

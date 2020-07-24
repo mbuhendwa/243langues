@@ -1,0 +1,38 @@
+<!-- Header -->
+<app-header></app-header>
+
+<!-- Content -->
+<main role="main" class="site-content">
+
+    <!-- <div class="container-lg pt-4 pb-4"> -->
+        <div class="row justify-content-center" style="margin-left:0rem;">
+        
+            <div class="col-md-4 col-lg-4">
+                <div class="form-group">
+                    <label>Intitulé de la leçon</label>
+                    <input class="form-control" type="text" (ngModel)="lesson.title" [value]="lesson.title">
+                    <small class="form-text text-muted">Titre</small>
+                </div>
+                
+                <div class="form-group">
+                    <label>Contenu de la leçon</label>
+                    <textarea class="form-control" (change)="updateContent($event.target.value)" (ngModel)="lesson.content" [value]="lesson.content" rows="15"></textarea>
+                    <small class="form-text text-muted">Leçon</small>
+                </div>
+                
+                <div class="form-group">
+                    <label>Publié le {{ lesson.published_date.seconds*1000 | date: 'dd MMMM y' }}.</label>
+                </div>
+                
+                <div class="form-group">
+                    <button class="btn btn-success">Sauvegarder</button>
+                </div>
+            </div>
+
+            <div class="col-md-8 col-lg-8">
+                <article class="article-post" [innerHTML]="lesson.content"></article>
+            </div>
+        </div>
+    <!-- </div> -->
+    <hr>
+</main>

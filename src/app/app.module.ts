@@ -12,6 +12,7 @@ import { FooterComponent } from './components/layout/footer/footer.component';
 import { environment } from 'src/environments/environment';
 import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
+import { EditorComponent } from './components/editor/editor.component';
 
 registerLocaleData(localeFr);
 
@@ -21,7 +22,8 @@ registerLocaleData(localeFr);
     LessonComponent,
     HomeComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    EditorComponent
   ],
   imports: [
     BrowserModule,
