@@ -10,7 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class LessonComponent implements OnInit {
   lesson: any;
-  getLesson = (title: string) => this.lessonService.getLesson(title).subscribe(response => (this.lesson = response.docs[0].data()));
+  getLesson = (title: string) => this.lessonService.getLessonFromTitle(title).subscribe(response => (this.lesson = response.docs[0].data()));
 
   constructor(private lessonService: LessonService, private route: ActivatedRoute) { }
 

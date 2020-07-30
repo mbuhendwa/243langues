@@ -31,7 +31,7 @@ registerLocaleData(localeFr);
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule
   ],
-  providers: [{ provide: LOCALE_ID, useValue: 'fr-CD'}],
+  providers: [{ provide: LOCALE_ID, useValue: 'fr-FR'}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
