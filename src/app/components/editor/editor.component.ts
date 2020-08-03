@@ -27,7 +27,7 @@ export class EditorComponent implements OnInit {
       this.is_update = true;
       this.getLesson();
     }
-    else this.lesson = { title: "New lesson", content: "lesson here", published_date: Date.now() }
+    else this.lesson = { id: null, title: null, content: null, published_date: null }
   }
 
   // DB functions
@@ -35,6 +35,7 @@ export class EditorComponent implements OnInit {
     this.lessonService.getLesson(this.id).subscribe(response => (this.lesson = response.data()));
   }
   createLesson(){
+    this.lesson.published_date = Date.now();
     this.lessonService
       .createLesson(this.lesson)
       .then(() => { return this.router.navigate([`/lesson/${this.getUrlPath(this.lesson.title)}`]) })
