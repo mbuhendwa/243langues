@@ -1,6 +1,14 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { LessonService } from 'src/app/services/lesson.service';
 import { ActivatedRoute } from '@angular/router';
+import { MatTreeNestedDataSource } from '@angular/material/tree';
+import { NestedTreeControl } from '@angular/cdk/tree';
+
+interface LessonNode {
+  title: string;
+  url?: string;
+  chapters?: LessonNode[];
+}
 
 @Component({
   selector: 'app-lesson',
@@ -10,12 +18,19 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class LessonComponent implements OnInit {
   lesson: any;
-  getLesson = (title: string) => this.lessonService.getLessonFromTitle(title).subscribe(response => (this.lesson = response.docs[0].data()));
+  tableTreeControl = new NestedTreeControl<LessonNode>(node => node.chapters);
+  contentTable = new MatTreeNestedDataSource<LessonNode>();
+
+  hasChild = (_: number, node: LessonNode) => !!node.chapters && node.chapters.length > 0;
+  
+  getLesson = (id: string) => this.lessonService.getLesson(id).subscribe(response => (this.lesson = response.data()));
+  getTable = () => this.lessonService.getContentTable().subscribe(response => (this.contentTable.data = response.data().i));
 
   constructor(private lessonService: LessonService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.getLesson(this.route.snapshot.params.title.replace(/-/g, ' '));
+    this.getLesson(this.route.snapshot.params.id);
+    this.getTable();
   }
 
 }

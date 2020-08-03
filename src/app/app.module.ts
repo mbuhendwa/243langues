@@ -13,6 +13,12 @@ import { environment } from 'src/environments/environment';
 import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
 import { EditorComponent } from './components/editor/editor.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatIconModule } from '@angular/material/icon';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatTreeModule } from '@angular/material/tree';
+import { CourseContentsComponent } from './components/course-contents/course-contents.component';
 
 registerLocaleData(localeFr);
 
@@ -23,13 +29,19 @@ registerLocaleData(localeFr);
     HomeComponent,
     HeaderComponent,
     FooterComponent,
-    EditorComponent
+    EditorComponent,
+    CourseContentsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    BrowserAnimationsModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatToolbarModule,
+    MatTreeModule,
   ],
   providers: [{ provide: LOCALE_ID, useValue: 'fr-FR'}],
   bootstrap: [AppComponent]

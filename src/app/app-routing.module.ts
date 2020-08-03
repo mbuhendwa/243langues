@@ -3,10 +3,12 @@ import { Routes, RouterModule } from '@angular/router';
 import { LessonComponent } from './components/lesson/lesson.component';
 import { HomeComponent } from './components/home/home.component';
 import { EditorComponent } from './components/editor/editor.component';
+import { CourseContentsComponent } from './components/course-contents/course-contents.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'lesson/:title', component: LessonComponent },
+  { path: 'table-des-matieres', component: CourseContentsComponent },
+  { path: 'lesson/:id', component: LessonComponent },
   { path: 'editor/new-lesson', component: EditorComponent },
   { path: 'edit/lesson/:id', component: EditorComponent }
 ];

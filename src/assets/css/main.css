@@ -5,6 +5,7 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 :root {
+  --cdvertcitron: #9dd4a7;
   --blue: #7832e2;
   --indigo: #502c6c;
   --purple: #ad6edd;
@@ -5147,6 +5148,9 @@ button.bg-lightblue:focus {
 .bg-white {
   background-color: #fff !important; }
 
+.bg-green {
+  background-color: var(--cdvertcitron) !important; }
+  
 .bg-transparent {
   background-color: transparent !important; }
 

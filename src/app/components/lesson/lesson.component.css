@@ -3,6 +3,7 @@
     --cdred: #ce102f;
     --cdyellow: #f7d618;
     --cdvert: #1e752c;
+    --cdvertcitron: #9dd4a7;
     --cdgold: #ffe7a45b;
     --cdchoco: chocolate;
 }
@@ -42,4 +43,26 @@
 }
 .pagination .next-lesson {
     text-align: right;
+}
+
+/* .mat-icon-rtl-mirror {
+    padding: 0;
+    border: none;
+    background: none;
+} */
+#toggle-btn {
+    /* background-repeat: no-repeat; */
+    cursor: pointer;
+}
+.toggle-btn {
+    cursor: pointer;
+}
+.example-tree-invisible {
+    display: none;
+}
+  
+.example-tree ul, .example-tree li {
+    margin-top: 0;
+    margin-bottom: 0;
+    list-style-type: none;
 }

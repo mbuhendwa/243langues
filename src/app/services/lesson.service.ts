@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, DocumentData } from '@angular/fire/firestore';
 import * as firebase from 'firebase';
-import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +8,14 @@ import { Router } from '@angular/router';
 export class LessonService {
   private readonly collection: string = "lingala-lessons";
 
-  constructor(private firestore: AngularFirestore, private router: Router) {}
+  constructor(private firestore: AngularFirestore) {}
+
+  getContentTable(){
+    return this.firestore
+      .collection(this.collection)
+      .doc('table-of-contents')
+      .get()
+  }
 
   getLesson(id: string){
     return this.firestore
@@ -17,19 +23,12 @@ export class LessonService {
       .doc(id)
       .get()
   }
-  // get lesson from title
-  getLessonFromTitle(title: string){
-    return this.firestore
-      .collection(this.collection, ref => { return ref.where("title", "==", title) })
-      .get()
-  }
 
-  // update lesson data
   updateLesson(lesson: DocumentData){
     return this.firestore.collection(this.collection)
       .doc(lesson.id)
       .set(
-        { 
+        {
           title: lesson.title,
           content: lesson.content
         },
