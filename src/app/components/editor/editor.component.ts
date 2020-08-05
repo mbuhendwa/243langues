@@ -2,6 +2,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { LessonService } from 'src/app/services/lesson.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DocumentData } from '@angular/fire/firestore';
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-editor',
@@ -35,23 +36,23 @@ export class EditorComponent implements OnInit {
     this.lessonService.getLesson(this.id).subscribe(response => (this.lesson = response.data()));
   }
   createLesson(){
-    this.lesson.published_date = Date.now();
+    var id = this.lesson.id;
+    delete this.lesson.id;
+    this.lesson.published_date = firebase.firestore.Timestamp.now();
     this.lessonService
-      .createLesson(this.lesson)
-      .then(() => { return this.router.navigate([`/lesson/${this.getUrlPath(this.lesson.title)}`]) })
+      .createLesson(this.lesson, id)
+      .then(() => { return this.router.navigate([`/lesson/${id}`]) })
       .catch(response => { console.error("Error writing document: ", response); });
   }
   updateLesson(){
+    var id = this.lesson.id;
+    delete this.lesson.id;
     this.lessonService
-      .updateLesson(this.lesson)
-      .then(() => { return this.router.navigate([`/lesson/${this.getUrlPath(this.lesson.title)}`]) })
+      .updateLesson(this.lesson, id)
+      .then(() => { return this.router.navigate([`/lesson/${id}`]) })
       .catch(response => { console.error("Error writing document: ", response); });
   }
   updateField(field: string, val: string){
     this.lesson[field] = val;
-  }
-  // returns a url with dashed title
-  getUrlPath(title: string){
-    return title.replace(/ /g, '-');
   }
 }
