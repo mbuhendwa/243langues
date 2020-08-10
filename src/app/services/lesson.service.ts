@@ -24,9 +24,9 @@ export class LessonService {
       .get()
   }
 
-  updateLesson(lesson: DocumentData, id: string){
+  updateLesson(lesson: DocumentData){
     return this.firestore.collection(this.collection)
-      .doc(id)
+      .doc(lesson.id)
       .set(
         {
           title: lesson.title,
@@ -36,8 +36,8 @@ export class LessonService {
       )
   }
 
-  createLesson(lesson: DocumentData, id: string) {
-    return this.firestore.doc(`${this.collection}/${id}`)
+  createLesson(lesson: DocumentData) {
+    return this.firestore.doc(`${this.collection}/${lesson.id}`)
       .set(lesson)
   }
 }

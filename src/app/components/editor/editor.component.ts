@@ -36,20 +36,16 @@ export class EditorComponent implements OnInit {
     this.lessonService.getLesson(this.id).subscribe(response => (this.lesson = response.data()));
   }
   createLesson(){
-    var id = this.lesson.id;
-    delete this.lesson.id;
     this.lesson.published_date = firebase.firestore.Timestamp.now();
     this.lessonService
-      .createLesson(this.lesson, id)
-      .then(() => { return this.router.navigate([`/lesson/${id}`]) })
+      .createLesson(this.lesson)
+      .then(() => { return this.router.navigate([`/lesson/${this.lesson.id}`]) })
       .catch(response => { console.error("Error writing document: ", response); });
   }
   updateLesson(){
-    var id = this.lesson.id;
-    delete this.lesson.id;
     this.lessonService
-      .updateLesson(this.lesson, id)
-      .then(() => { return this.router.navigate([`/lesson/${id}`]) })
+      .updateLesson(this.lesson)
+      .then(() => { return this.router.navigate([`/lesson/${this.lesson.id}`]) })
       .catch(response => { console.error("Error writing document: ", response); });
   }
   updateField(field: string, val: string){
