@@ -19,6 +19,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTreeModule } from '@angular/material/tree';
 import { CourseContentsComponent } from './components/course-contents/course-contents.component';
+import { ContentTableComponent } from './components/layout/content-table/content-table.component';
 
 registerLocaleData(localeFr);
 
@@ -30,7 +31,8 @@ registerLocaleData(localeFr);
     HeaderComponent,
     FooterComponent,
     EditorComponent,
-    CourseContentsComponent
+    CourseContentsComponent,
+    ContentTableComponent
   ],
   imports: [
     BrowserModule,
