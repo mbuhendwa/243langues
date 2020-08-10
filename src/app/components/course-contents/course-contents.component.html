@@ -10,8 +10,12 @@
         <div class="col-md-12 col-lg-8">
             
             <!-- Article -->
+            <mat-sidenav class="col-md-2 col-lg-2" #sidenav mode="side" [fixedInViewport]="true" opened>
+                <app-content-table [isNumberedList]="true"></app-content-table>
+            </mat-sidenav>
             <article class="article-post">
-                <ol type="I">
+                <!-- <app-content-table></app-content-table> -->
+                <!-- <ol type="I">
                     <div *ngFor="let lesson of lessons">
                         <li *ngIf="lesson.url; else noUrlOnMainLesson"><a href="{{ lesson.url }}">{{ lesson.title }}</a></li>
                         
@@ -24,7 +28,7 @@
                             <li>{{ lesson.title }}</li>
                         </ng-template>
                     </div>
-                </ol>
+                </ol> -->
             </article>
 
             <hr>
