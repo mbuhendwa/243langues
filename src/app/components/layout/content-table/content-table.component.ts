@@ -18,7 +18,6 @@ export class ContentTableComponent implements OnInit {
   @Input() isNumberedList: Boolean;
   tableTreeControl = new NestedTreeControl<LessonNode>(node => node.chapters);
   contentTable = new MatTreeNestedDataSource<LessonNode>();
-  keys: Array<any> = [1,2,3,4];
 
   constructor(private lessonService: LessonService) { }
 

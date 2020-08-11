@@ -7,14 +7,10 @@ import { LessonService } from 'src/app/services/lesson.service';
   styleUrls: ['./course-contents.component.css']
 })
 export class CourseContentsComponent implements OnInit {
-  // lessons:any;
-
-  // getContents = () => this.lessonService.getContentTable().subscribe(response => (this.lessons = response.data().i));
 
   constructor() { }
 
   ngOnInit(): void {
-    // this.getContents();
   }
 
 }
