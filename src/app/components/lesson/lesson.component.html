@@ -1,7 +1,9 @@
 <!-- Header -->
 <app-header></app-header>
 
-<mat-sidenav-container>
+<app-loader *ngIf="!lesson"></app-loader>
+
+<mat-sidenav-container *ngIf="lesson">
     <mat-sidenav class="col-md-2 col-lg-2 bg-green" #sidenav mode="over" [fixedInViewport]="true" [fixedTopGap]="70" [fixedBottomGap]="0" [opened]="!lesson">
         <a (click)="sidenav.toggle()" mat-fab class="toggle-btn">
             <mat-icon>close</mat-icon>
@@ -14,7 +16,7 @@
 
     <mat-sidenav-content>
         <!-- Content -->
-        <main *ngIf="lesson; else Error404" role="main" class="site-content">
+        <main role="main" class="site-content">
             <div class="container">
                 
                 <div (click)="sidenav.toggle()" class="toggle-btn">
@@ -133,30 +135,9 @@
                     </div>
                 </div>
             </div>
-            
-            <!-- Aletbar Prev/Next -->
-            <div class="alertbar">
-                <div class="container">
-                    <div class="row prevnextlinks small font-weight-bold">
-                        <div class="col-md-6 rightborder pl-0">
-                            <a class="text-dark" href="/mundana-theme-jekyll/acumulated-experience/"> <img height="30px" class="mr-1" src="/mundana-theme-jekyll/assets/images/15.jpg">  Accumulated experience of social living</a>
-                        </div>
-                        <div class="col-md-6 text-right pr-0">
-                            <a class="text-dark" href="/mundana-theme-jekyll/first-mass-produced/"> The first mass-produced book to deviate from a rectilinear format  <img height="30px" class="ml-1" src="/mundana-theme-jekyll/assets/images/17.jpg"> </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </main>
     </mat-sidenav-content>
     
 </mat-sidenav-container>
-
-<!-- 404 Error -->
-<ng-template #Error404>
-    <div class="container">
-        <h5>Could not find Lesson.</h5>
-    </div>
-</ng-template>
 
 <app-footer></app-footer>

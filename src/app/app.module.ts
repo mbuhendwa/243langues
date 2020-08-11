@@ -20,6 +20,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTreeModule } from '@angular/material/tree';
 import { CourseContentsComponent } from './components/course-contents/course-contents.component';
 import { ContentTableComponent } from './components/layout/content-table/content-table.component';
+import { LoaderComponent } from './components/layout/loader/loader.component';
 
 registerLocaleData(localeFr);
 
@@ -32,7 +33,8 @@ registerLocaleData(localeFr);
     FooterComponent,
     EditorComponent,
     CourseContentsComponent,
-    ContentTableComponent
+    ContentTableComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,
