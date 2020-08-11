@@ -8,60 +8,16 @@
     
     <div class="row justify-content-center">
         <div class="col-md-12 col-lg-8">
-            
-            <!-- Article -->
-            <mat-sidenav class="col-md-2 col-lg-2" #sidenav mode="side" [fixedInViewport]="true" opened>
-                <app-content-table [isNumberedList]="true"></app-content-table>
-            </mat-sidenav>
+            <!-- Table of contents -->
             <article class="article-post">
-                <!-- <app-content-table></app-content-table> -->
-                <!-- <ol type="I">
-                    <div *ngFor="let lesson of lessons">
-                        <li *ngIf="lesson.url; else noUrlOnMainLesson"><a href="{{ lesson.url }}">{{ lesson.title }}</a></li>
-                        
-                        <ol *ngIf="lesson.chapters">
-                            <div *ngFor="let chapter of lesson.chapters">
-                                <li *ngIf="chapter.url; else noUrlOnMainLesson"><a href="{{ chapter.url }}">{{ chapter.title }}</a></li>
-                            </div>
-                        </ol>
-                        <ng-template #noUrlOnMainLesson>
-                            <li>{{ lesson.title }}</li>
-                        </ng-template>
-                    </div>
-                </ol> -->
-            </article>
 
-            <hr>
-            <!-- Author Box -->
-            <div class="row mt-5">
-                <div class="col-md-2 align-self-center">
-                    <img class="rounded-circle" src="assets/images/avatar-mkb.jpg" alt="Michel" width="90"/>
-                </div>
-                <div class="col-md-10">		
-                    <h5 class="font-weight-bold">Écrit par Michel
-                        <span>
-                            <a target="_blank" href="https://twitter.com/MBuhendwa" class="btn btn-outline-success btn-sm btn-round ml-1">Suivre @MBuhendwa</a>
-                        </span>
-                    </h5>
-                    Fondateur de 243Langues
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Aletbar Prev/Next -->
-    <div class="alertbar">
-        <div class="container">
-            <div class="row prevnextlinks small font-weight-bold">
-                <div class="col-md-6 rightborder pl-0">
-                    <a class="text-dark" href="/mundana-theme-jekyll/acumulated-experience/"> <img height="30px" class="mr-1" src="/mundana-theme-jekyll/assets/images/15.jpg">  Accumulated experience of social living</a>
-                </div>
-                <div class="col-md-6 text-right pr-0">
-                    <a class="text-dark" href="/mundana-theme-jekyll/first-mass-produced/"> The first mass-produced book to deviate from a rectilinear format  <img height="30px" class="ml-1" src="/mundana-theme-jekyll/assets/images/17.jpg"> </a>
-                </div>
-            </div>
+                <mat-sidenav class="col-md-2 col-lg-2" #sidenav mode="side" [fixedInViewport]="true" opened>
+                    <app-content-table [isNumberedList]="true"></app-content-table>
+                </mat-sidenav>
+            </article>
         </div>
     </div>
 </main>
 
+<!-- Footer -->
 <app-footer></app-footer>
