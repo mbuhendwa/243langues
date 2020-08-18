@@ -1,7 +1,8 @@
 <!-- Header -->
 <app-header></app-header>
 
-<app-loader *ngIf="!lesson"></app-loader>
+<app-loader *ngIf="!lesson && !isLessonNotFound"></app-loader>
+<app-error404 *ngIf="isLessonNotFound && !lesson" [url]="currentURL()" [type]="'lesson'"></app-error404>
 
 <mat-sidenav-container *ngIf="lesson">
     <mat-sidenav class="col-md-2 col-lg-2 bg-green" #sidenav mode="over" [fixedInViewport]="true" [fixedTopGap]="70" [fixedBottomGap]="0" [opened]="!lesson">
@@ -128,10 +129,7 @@
                                 Fondateur de 243Langues
                             </div>
                         </div>
-                        <hr>
         
-                        <!-- Comments -->
-                        <div class="fb-comments" data-numposts="5" data-width=""></div>
                     </div>
                 </div>
             </div>
@@ -139,5 +137,10 @@
     </mat-sidenav-content>
     
 </mat-sidenav-container>
+<hr>
+<div class="row justify-content-center">
+    <!-- Comments -->
+    <div class="fb-comments" data-numposts="5" data-width="60%"></div>
+</div>
 
 <app-footer></app-footer>

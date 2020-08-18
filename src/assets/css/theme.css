@@ -803,4 +803,8 @@ div.a2a_full_footer {display:none;}
 		 height:280px !Important;
 	 }
  }
- 
+ table {
+	 font-size:15px;
+	 line-height:1.86;
+	 font-family:Lora;
+ }

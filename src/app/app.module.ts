@@ -21,6 +21,7 @@ import { MatTreeModule } from '@angular/material/tree';
 import { CourseContentsComponent } from './components/course-contents/course-contents.component';
 import { ContentTableComponent } from './components/layout/content-table/content-table.component';
 import { LoaderComponent } from './components/layout/loader/loader.component';
+import { Error404Component } from './components/pages/error404/error404.component';
 
 registerLocaleData(localeFr);
 
@@ -34,7 +35,8 @@ registerLocaleData(localeFr);
     EditorComponent,
     CourseContentsComponent,
     ContentTableComponent,
-    LoaderComponent
+    LoaderComponent,
+    Error404Component
   ],
   imports: [
     BrowserModule,

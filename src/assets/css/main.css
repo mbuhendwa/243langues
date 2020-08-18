@@ -6,6 +6,7 @@
  */
 :root {
   --cdvertcitron: #9dd4a7;
+  --cdtraduction: #a7a7a7;
   --blue: #7832e2;
   --indigo: #502c6c;
   --purple: #ad6edd;
@@ -8464,3 +8465,9 @@ html {
     align-self: baseline !important; }
   .align-self-xl-stretch {
     align-self: stretch !important; } }
+.traduction-francaise {
+  font-style: italic;
+}
+.table-grey-font {
+  color: var(--cdtraduction);
+}
