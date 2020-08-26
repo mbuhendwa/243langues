@@ -10,18 +10,34 @@ export class LessonService {
 
   constructor(private firestore: AngularFirestore) {}
 
+  getTopLessons() {
+    return this.firestore.collection(this.collection, ref => ref.where("is_top_lesson", "==", true))
+    .get();
+  }
+  getRecentLessons() {
+    return this.firestore.collection(this.collection, ref => ref.where("is_post", "==", true).limit(10))
+    .get();
+  }
+  getRecentPosts() {
+    return this.firestore.collection(this.collection, ref => ref.where("is_post", "==", true).limit(5))
+    .get();
+  }
+  getHomeMainLesson() {
+    return this.firestore.collection(this.collection, ref => ref.where("isHomeLesson", "==", true))
+    .get();
+  }
   getContentTable(){
     return this.firestore
       .collection(this.collection)
       .doc('table-of-contents')
-      .get()
+      .get();
   }
 
   getLesson(id: string){
     return this.firestore
       .collection(this.collection)
       .doc(id)
-      .get()
+      .get();
   }
 
   updateLesson(lesson: DocumentData){
@@ -33,11 +49,11 @@ export class LessonService {
           content: lesson.content
         },
         { merge: true }
-      )
+      );
   }
 
   createLesson(lesson: DocumentData) {
     return this.firestore.doc(`${this.collection}/${lesson.id}`)
-      .set(lesson)
+      .set(lesson);
   }
 }

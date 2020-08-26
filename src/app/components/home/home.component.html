@@ -9,57 +9,39 @@
         <div class="container">
             <!-- Begin post excerpts, let's highlight the first 4 posts on top -->
             <div class="row remove-site-content-margin">
-                <!-- latest post -->
+                <!-- Main home lesson -->
                 <div class="col-md-6">
                     <div class="card border-0 mb-4 box-shadow">
-                        <a href="#">
+                        <a href="/lesson/{{ homeLesson.id }}">
                             <div class="topfirstimage" style="background-image: url('http://live.staticflickr.com/7331/12169018594_72a5de7b0e_b.jpg'); height: 200px;    background-size: cover;    background-repeat: no-repeat;"></div>     
                         </a>
                         <div class="card-body px-0 pb-0 d-flex flex-column align-items-start">
                             <h2 class="h4 font-weight-bold">
-                                <a class="text-dark" href="#">Bienvenu(e) sur 243Langues!</a>
+                                <a class="text-dark" href="/lesson/{{ homeLesson.id }}">Bienvenu(e) sur 243Langues!</a>
                             </h2>
-                            <p class="excerpt">
-                                Bienvenu sur 243Langues, un projet de documentation des langues du Congo...
-                            </p>
+                            <p class="excerpt" [innerHTML]="excerpt(homeLesson.content)"></p>
                             <div>
-                                <!-- <small class="d-block text-muted">
-                                    In 
-                                    <span class="catlist">
-                                        <a class="text-capitalize text-muted smoothscroll" href="/mundana-theme-jekyll/categories.html#jekyll">Jekyll</a>
-                                        <span class="sep">, </span>
-                                    </span>
-                                </small> -->
-                                <small class="text-muted">Feb 04, 2019</small>
+                                <small class="text-muted">22 Août 2020</small>
                             </div>
                         </div>
                     </div>
                 </div>
 
+                <!-- Top lessons -->
                 <div class="col-md-6">
-                    <!-- second latest post -->
-                    <div *ngFor="let number of [0,1,2]" class="mb-3 d-flex align-items-center">                
+                    <div *ngFor="let top_lesson of topLessons" class="mb-3 d-flex align-items-center">                
 
                         <div class="col-md-4">
-                            <a href="#">
-                                <img class="w-100" src="https://images.unsplash.com/photo-1528784351875-d797d86873a1?ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80" alt="Powerful things you can do with the Markdown editor">
+                            <a href="/lesson/{{ top_lesson.id }}">
+                                <img class="w-100" src="https://images.unsplash.com/photo-1528784351875-d797d86873a1?ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80">
                             </a>
                         </div>
 
                         <div>
                             <h2 class="mb-2 h6 font-weight-bold">
-                                <a class="text-dark" href="#">Powerful things you can do with the Markdown editor</a>
+                                <a class="text-dark" href="/lesson/{{ top_lesson.id }}">{{ top_lesson.data().title }}</a>
                             </h2>
-                            <!-- <small class="d-block text-muted">
-                                In 
-                                <span class="catlist">
-                                    <a class="text-capitalize text-muted smoothscroll" href="/mundana-theme-jekyll/categories.html#jekyll">Jekyll</a>
-                                    <span class="sep">, </span>
-                                    <a class="text-capitalize text-muted smoothscroll" href="/mundana-theme-jekyll/categories.html#tutorial">tutorial</a>
-                                    <span class="sep">, </span>
-                                </span>
-                            </small> -->
-                            <small class="text-muted">Feb 03, 2019</small>
+                            <small class="text-muted">{{ top_lesson.data().published_date.seconds * 1000 | date: 'dd MMMM y' }}</small>
                         </div>
                     </div>
                 </div>
@@ -88,33 +70,15 @@
 
                 <div class="col-md-8 main-loop">
 
-                    <h4 class="font-weight-bold spanborder"><span>All Stories</span></h4>
+                    <h4 class="font-weight-bold spanborder"><span>Leçons récentes</span></h4>
 
-                    <div *ngFor="let number of [0,1,2]" class="mb-5 d-flex justify-content-between main-loop-card">
+                    <div *ngFor="let lesson of recentLessons" class="mb-5 d-flex justify-content-between main-loop-card">
                         <div class="pr-3">
                             <h2 class="mb-1 h4 font-weight-bold">
-                                <a class="text-dark" href="#">Press and education</a>
+                                <a class="text-dark" href="/lesson/{{ lesson.id }}">{{ lesson.data().title }}</a>
                             </h2>
-                            <p class="excerpt">
-                                Even the press, the classroom, the platform, and the pulpit in many instances do not give us objective and unbiased truths.
-                                To save man from the morass of propaganda, in my opinion, i...
-                            </p>
-                            <!-- <small class="d-block text-muted">
-                                In 
-                                <span class="catlist">
-                                    <a class="text-capitalize text-muted smoothscroll" href="/mundana-theme-jekyll/categories.html#jekyll">Jekyll</a>
-                                    <span class="sep">, </span>
-                                    <a class="text-capitalize text-muted smoothscroll" href="/mundana-theme-jekyll/categories.html#tutorial">tutorial</a>
-                                    <span class="sep">, </span>
-                                </span>
-                            </small> -->
-                            <small class="text-muted">Jan 25, 2019</small>
-                        </div>
-
-                        <div class="col-md-3 pr-0 text-right">
-                            <a href="#">
-                                <img class="w-100" src="http://live.staticflickr.com/7331/12169018594_72a5de7b0e_b.jpg" alt="Press and education">
-                            </a>
+                            <p class="excerpt" [innerHTML]="excerpt(lesson.data().content)"></p>
+                            <small class="text-muted">{{ lesson.data().published_date.seconds * 1000 | date: 'dd MMMM y' }}</small>
                         </div>
                     </div>
                     
@@ -132,19 +96,14 @@
 
                 <div class="col-md-4">
                     <div class="sticky-top sticky-top-offset">
-                        <h4 class="font-weight-bold spanborder"><span>Featured</span></h4>  
+                        <h4 class="font-weight-bold spanborder"><span>Blog</span></h4>
                         <ol class="list-featured">
-                            <li class="mb-4">
+                            <li *ngFor="let post of recentPosts" class="mb-4">
                                 <span>
                                     <h6 class="font-weight-bold">
-                                        <a href="/mundana-theme-jekyll/markup-example/" class="text-dark">Markdown Example</a>
+                                        <a href="/lesson/{{ post.id }}" class="text-dark">{{ post.data().title}}</a>
                                     </h6>
-                                    <span class="d-block text-muted">
-                                        In <span class="catlist">
-                                            <a class="text-capitalize text-muted smoothscroll" href="/mundana-theme-jekyll/categories.html#jekyll">Jekyll</a><span class="sep">, </span>
-                                            <a class="text-capitalize text-muted smoothscroll" href="/mundana-theme-jekyll/categories.html#tutorial">tutorial</a><span class="sep">, </span>
-                                        </span>
-                                    </span>
+                                    <span class="d-block text-muted">{{ post.data().published_date.seconds * 1000 | date: 'dd MMMM y' }}</span>
                                 </span>
                             </li>
                         </ol>
