@@ -75,6 +75,7 @@
                     <div class="col-md-12 col-lg-8">
                         
                         <!-- Article -->
+                        <div *ngIf="lesson.is_changing"><p></p><p class="lead"><mark><i class="fas fa-exclamation-triangle"></i> ATTENTION : Cette leçon est sujette à des changements fréquents.</mark></p></div>
                         <article class="article-post" [innerHTML]="lesson.content"></article>
                         
                         <!-- Navigation -->
@@ -140,7 +141,7 @@
 <hr>
 <div class="row justify-content-center">
     <!-- Comments -->
-    <div class="fb-comments" data-numposts="5" data-width="60%"></div>
+    <div class="col-md-8 col-lg-8" id="disqus_thread"></div>    
 </div>
 
 <app-footer></app-footer>
