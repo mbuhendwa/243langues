@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LessonService } from 'src/app/services/lesson.service';
 import { DocumentData, QueryDocumentSnapshot } from '@angular/fire/firestore';
+import { Title, Meta } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-home',
@@ -29,9 +30,17 @@ export class HomeComponent implements OnInit {
 
   excerpt = (str: string) => str.substr(0, 120) + "...";
   
-  constructor(private lessonService: LessonService) { }
+  constructor(
+    private lessonService: LessonService,
+    private title: Title,
+    private meta: Meta) { }
 
   ngOnInit(): void {
+    this.title.setTitle("Bienvenu sur 243Langues!");
+    this.meta.updateTag({
+      name: "description",
+      content: "Site d'apprentissage du Lingala. Apprenez la grammaire simplifiee du Lingala, la conjugaison, et le vocabulaire."
+    });
     this.getHomeLesson();
     this.getRecentLessons();
     this.getRecentPosts();
