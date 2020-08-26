@@ -28,7 +28,13 @@ export class EditorComponent implements OnInit {
       this.is_update = true;
       this.getLesson();
     }
-    else this.lesson = { id: null, title: null, content: null, published_date: null }
+    else this.lesson = {
+      id: null,
+      title: null,
+      content: null,
+      published_date: null,
+      description: null
+    }
   }
 
   // DB functions

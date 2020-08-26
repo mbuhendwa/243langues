@@ -46,6 +46,7 @@ export class LessonService {
       .set(
         {
           title: lesson.title,
+          description: lesson.description,
           content: lesson.content
         },
         { merge: true }

@@ -27,7 +27,7 @@ export class LessonComponent implements OnInit {
   }
   onGetLessonComplete = (lesson: any) => {
     this.lesson = lesson;
-    this.title.setTitle(lesson.title);
+    this.title.setTitle(`${lesson.title} - Cours de Lingala`);
     this.meta.updateTag({ name: "description", content: lesson.description });
     if(!lesson) this.isLessonNotFound = true;
   }
