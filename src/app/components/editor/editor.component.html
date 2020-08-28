@@ -35,6 +35,11 @@
                 <small class="form-text text-muted">Leçon</small>
             </div>
             
+            <div class="form-group">
+                <label>Is this a Blog Post?
+                <input type="checkbox" (click)="updateField('is_post', $event.target.checked)" (ngModel)="lesson.is_post" checked="{{ lesson.is_post==true? 'checked': ''}}"></label>
+            </div>
+            
             <div *ngIf="is_update" class="form-group">
                 <label>Publié le {{ lesson.published_date.seconds*1000 | date: 'dd MMMM y' }}.</label>
             </div>

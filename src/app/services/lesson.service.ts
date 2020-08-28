@@ -14,12 +14,12 @@ export class LessonService {
     return this.firestore.collection(this.collection, ref => ref.where("is_top_lesson", "==", true))
     .get();
   }
-  getRecentLessons() {
-    return this.firestore.collection(this.collection, ref => ref.where("is_post", "==", true).limit(10))
+  getRecentLessons(limit: number = 5) {
+    return this.firestore.collection(this.collection, ref => ref.where("is_post", "==", false).orderBy("published_date", "desc").limit(limit))
     .get();
   }
-  getRecentPosts() {
-    return this.firestore.collection(this.collection, ref => ref.where("is_post", "==", true).limit(5))
+  getRecentPosts(limit: number = 5) {
+    return this.firestore.collection(this.collection, ref => ref.where("is_post", "==", true).orderBy("published_date", 'desc').limit(limit))
     .get();
   }
   getHomeMainLesson() {
@@ -41,13 +41,11 @@ export class LessonService {
   }
 
   updateLesson(lesson: DocumentData){
+    lesson.is_post = Boolean(lesson.is_post);
     return this.firestore.collection(this.collection)
       .doc(lesson.id)
       .set(
-        {
-          title: lesson.title,
-          content: lesson.content
-        },
+        lesson,
         { merge: true }
       );
   }

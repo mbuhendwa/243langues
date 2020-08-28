@@ -10,7 +10,7 @@
             <!-- Begin post excerpts, let's highlight the first 4 posts on top -->
             <div class="row remove-site-content-margin">
                 <!-- Main home lesson -->
-                <div class="col-md-6">
+                <div  *ngIf="homeLesson"class="col-md-6">
                     <div class="card border-0 mb-4 box-shadow">
                         <a href="/lesson/{{ homeLesson.id }}">
                             <div class="topfirstimage" style="background-image: url('http://live.staticflickr.com/7331/12169018594_72a5de7b0e_b.jpg'); height: 200px;    background-size: cover;    background-repeat: no-repeat;"></div>     
@@ -28,7 +28,7 @@
                 </div>
 
                 <!-- Top lessons -->
-                <div class="col-md-6">
+                <div *ngIf="topLessons" class="col-md-6">
                     <div *ngFor="let top_lesson of topLessons" class="mb-3 d-flex align-items-center">                
 
                         <div class="col-md-4">
@@ -68,7 +68,7 @@
 
             <div class="row mt-3">
 
-                <div class="col-md-8 main-loop">
+                <div *ngIf="recentLessons" class="col-md-8 main-loop">
 
                     <h4 class="font-weight-bold spanborder"><span>Leçons récentes</span></h4>
 
@@ -95,7 +95,7 @@
                 </div>
 
                 <div class="col-md-4">
-                    <div class="sticky-top sticky-top-offset">
+                    <div *ngIf="recentPosts" class="sticky-top sticky-top-offset">
                         <h4 class="font-weight-bold spanborder"><span>Blog</span></h4>
                         <ol class="list-featured">
                             <li *ngFor="let post of recentPosts" class="mb-4">
