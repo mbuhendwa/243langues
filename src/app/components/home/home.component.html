@@ -29,13 +29,14 @@
 
                 <!-- Top lessons -->
                 <div *ngIf="topLessons" class="col-md-6">
-                    <div *ngFor="let top_lesson of topLessons" class="mb-3 d-flex align-items-center">                
-
-                        <div class="col-md-4">
+                    <h4 class="font-weight-bold spanborder"><span>À lire</span></h4>
+                    <div *ngFor="let top_lesson of topLessons" class="mb-3 d-flex align-items-center">
+                        
+                        <!-- <div class="col-md-4">
                             <a href="/lesson/{{ top_lesson.id }}">
                                 <img class="w-100" src="https://images.unsplash.com/photo-1528784351875-d797d86873a1?ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80">
                             </a>
-                        </div>
+                        </div> -->
 
                         <div>
                             <h2 class="mb-2 h6 font-weight-bold">
@@ -53,9 +54,9 @@
                 <div class="pl-4 pr-0 h-100 tofront">
                     <div class="row justify-content-between">
                         <div class="col-md-6 pt-6 pb-6 pr-lg-4 align-self-center">
-                            <h1 class="mb-3">Vous pouvez apprendre le Lingala avec nous.</h1>
+                            <!-- <h1 class="mb-3">Vous pouvez apprendre le Lingala avec nous.</h1> -->
                             <p class="mb-3 lead">
-                                Apprenez la grammaire et la phraseologie completes et simplifiées du Lingala.
+                                Apprenez la grammaire et la phraséologie complètes et simplifiées du Lingala.
                             </p>
                             <a href="/table-des-matieres" class="btn btn-dark">Commencer</a>
                         </div>
@@ -85,10 +86,7 @@
                     <div class="mt-5">
                         <!-- Pagination links -->
                         <ul class="pagination">
-                            <li class="page-item disabled"><span class="prev page-link">&laquo;</span></li>
-                            <li class="page-item disabled"><span class="webjeda page-link">1</span></li>
-                            <li class="page-item"><a class="page-link" href="/mundana-theme-jekyll/page2">2</a></li>
-                            <li class="page-item"><a class="page-link" href="/mundana-theme-jekyll/page2">Next &raquo;</a></li>
+                            <li class="page-item"><a class="page-link" href="/blog/liste-de-lecons">Voir plus &raquo;</a></li>
                         </ul>
                     </div>
 
