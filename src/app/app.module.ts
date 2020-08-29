@@ -22,6 +22,7 @@ import { CourseContentsComponent } from './components/course-contents/course-con
 import { ContentTableComponent } from './components/layout/content-table/content-table.component';
 import { LoaderComponent } from './components/layout/loader/loader.component';
 import { Error404Component } from './components/pages/error404/error404.component';
+import { LessonListComponent } from './components/lesson-list/lesson-list.component';
 
 registerLocaleData(localeFr);
 
@@ -36,7 +37,8 @@ registerLocaleData(localeFr);
     CourseContentsComponent,
     ContentTableComponent,
     LoaderComponent,
-    Error404Component
+    Error404Component,
+    LessonListComponent
   ],
   imports: [
     BrowserModule,

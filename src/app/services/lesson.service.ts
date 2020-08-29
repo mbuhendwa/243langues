@@ -11,15 +11,27 @@ export class LessonService {
   constructor(private firestore: AngularFirestore) {}
 
   getTopLessons() {
-    return this.firestore.collection(this.collection, ref => ref.where("is_top_lesson", "==", true))
+    return this.firestore.collection(this.collection, ref => ref.where("is_top_lesson", "==", true).orderBy("published_date", "desc"))
     .get();
   }
-  getRecentLessons() {
-    return this.firestore.collection(this.collection, ref => ref.where("is_post", "==", true).limit(10))
+  prevLessons(first: DocumentData, is_post: Boolean, limit: number = 10) {
+    return this.firestore.collection(this.collection, ref => ref.where("is_post", "==", is_post).orderBy("published_date", "desc").endBefore(first))
     .get();
   }
-  getRecentPosts() {
-    return this.firestore.collection(this.collection, ref => ref.where("is_post", "==", true).limit(5))
+  getLessons(is_post: Boolean, limit: number = 10) {
+    return this.firestore.collection(this.collection, ref => ref.where("is_post", "==", is_post).orderBy("published_date", "desc").limit(limit))
+    .get();
+  }
+  nextLessons(last: DocumentData, is_post: Boolean, limit: number = 10) {
+    return this.firestore.collection(this.collection, ref => ref.where("is_post", "==", is_post).orderBy("published_date", "desc").startAfter(last).limit(limit))
+    .get();
+  }
+  getRecentLessons(limit: number = 5) {
+    return this.firestore.collection(this.collection, ref => ref.where("is_post", "==", false).orderBy("published_date", "desc").limit(limit))
+    .get();
+  }
+  getRecentPosts(limit: number = 5) {
+    return this.firestore.collection(this.collection, ref => ref.where("is_post", "==", true).orderBy("published_date", 'desc').limit(limit))
     .get();
   }
   getHomeMainLesson() {
@@ -41,14 +53,11 @@ export class LessonService {
   }
 
   updateLesson(lesson: DocumentData){
+    lesson.is_post = Boolean(lesson.is_post);
     return this.firestore.collection(this.collection)
       .doc(lesson.id)
       .set(
-        {
-          title: lesson.title,
-          description: lesson.description,
-          content: lesson.content
-        },
+        lesson,
         { merge: true }
       );
   }
