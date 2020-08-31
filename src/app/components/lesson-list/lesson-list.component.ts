@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { LessonService } from 'src/app/services/lesson.service';
 import { DocumentData } from '@angular/fire/firestore';
+import { Title, Meta } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-lesson-list',
@@ -30,10 +31,16 @@ export class LessonListComponent implements OnInit {
     });
   }
 
-  constructor(private route: ActivatedRoute, private lessonService: LessonService) { }
+  constructor(
+    private route: ActivatedRoute,
+    private title: Title,
+    private meta: Meta,
+    private lessonService: LessonService) { }
 
   ngOnInit(): void {
     this.type = this.route.snapshot.params.type == 'posts'? 'Posts': 'Leçons';
+    this.title.setTitle(`${this.type} Lingala - 243Langues`);
+    this.meta.updateTag({name: "description", content: "Liste de toutes les leçons et blog posts sur le Lingala. Naviquez la liste de leçons et posts."})
     this.initLessons();
   }
   excerpt(str: string){
