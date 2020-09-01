@@ -34,6 +34,7 @@
             "assets": [
               "src/favicon.ico",
               "src/assets",
+              "src/BingSiteAuth.xml",
               "src/sitemap.xml"
             ],
             "styles": [
